@@ -1,0 +1,93 @@
+
+#include "docopt.cpp/docopt.h"
+
+#define LOGURU_IMPLEMENTATION 1
+#include "loguru/loguru.hpp"
+
+#include "eaio/EAFileDirectory.h"
+#include "eaio/FnEncode.h"
+
+#include "eastl/vector.h"
+
+#include "json/json.hpp"
+using json = nlohmann::json;
+
+#include "workersystem.h"
+#include "commands/checkforupdates.h"
+
+int main(int argc, const char **argv) {
+
+   static const char USAGE[] =
+   R"(RepoTool!
+       Usage:
+         repotool (-h | --help)
+         repotool --version
+         repotool [-v <nr>] scan
+         repotool [-v <nr>] check
+         repotool [options] update
+         repotool [options] savestate <filename>
+    
+       Options:
+   )";
+
+   std::map<std::string, docopt::value> args
+      = docopt::docopt(USAGE, { argv + 1, argv + argc },
+                       true,               // show help if requested
+                       "repotool 0.2");  // version string
+
+   loguru::init(argc, argv);
+
+   eastl::vector<eastl::string> gitRepositories;
+
+   initJobSystem();
+
+   if(args["scan"] || true) {
+      LOG_F(0, "doing scan of directories");
+      eastl::vector<eastl::string> directories;
+
+      EA::IO::EntryFindData efd;
+      directories.pushBack(".");
+      while(directories.size() != 0) {
+         eastl::string currentDirectory = directories[0];
+         directories.erase(directories.begin() + 0);
+
+         char16_t path[1024];
+         EA::IO::StrlcpyUTF8ToUTF16(&path[0], 1024, currentDirectory.c_str());
+
+         if(EA::IO::entryFindFirst(path, u"*", &efd)) {
+            do {
+               if(efd.mbIsDirectory) {
+
+                  char8_t tmp[1024];
+                  EA::IO::StrlcpyUTF16ToUTF8(&tmp[0], 1024, efd.mName);
+                  //TODO: assert that efd.mName is less than 1024!
+                  LOG_F(1, "checking directory %s", tmp);
+
+                  if(EA::IO::StrEq16(efd.mName, u".git/")) {
+                     LOG_F(1, "found git repo in %s", currentDirectory.c_str());
+                     gitRepositories.pushBack(currentDirectory);
+                  } else {
+                     if(!EA::IO::StrEq16(efd.mName, u"./") && !EA::IO::StrEq16(efd.mName, u"../")) {
+                        directories.pushBack(tmp);                        
+                     }
+                  }
+               }
+            } while(EA::IO::entryFindNext(&efd));
+            EA::IO::entryFindFinish(&efd);
+         }         
+      }
+      //TODO: save to file
+   } else {
+      //TODO: use saved cache file with git repositories available
+   }
+
+   if(args["check"]) {
+      LOG_F(0, "checking all directories for updates");
+      checkForUpdates(args, gitRepositories);
+
+   }
+
+   shutdownJobSystem();
+
+   return 0;
+}
