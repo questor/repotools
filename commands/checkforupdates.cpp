@@ -30,6 +30,7 @@ void checkSingleRepo(WorkerParams *params) {
    callParams.workingDir = checkParams->repositoryToCheck.c_str();
    callParams.process = "git";
    callParams.arguments.pushBack("status");
+   callParams.arguments.pushBack("-s");
    callExecutable(&callParams);
    results.enqueue(callParams.output);
 }

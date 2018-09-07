@@ -9,9 +9,6 @@
 
 #include "eastl/vector.h"
 
-#include "json/json.hpp"
-using json = nlohmann::json;
-
 #include "workersystem.h"
 #include "commands/checkforupdates.h"
 
@@ -22,12 +19,13 @@ int main(int argc, const char **argv) {
        Usage:
          repotool (-h | --help)
          repotool --version
-         repotool [-v <nr>] scan
+         repotool [-v <nr>] [-d|--details] scan
          repotool [-v <nr>] check
-         repotool [options] update
-         repotool [options] savestate <filename>
+         repotool [-v <nr>] update
+         repotool [-v <nr>] savestate <filename>
     
        Options:
+         -d --details      show details (new/deleted repos)
    )";
 
    std::map<std::string, docopt::value> args
@@ -37,12 +35,14 @@ int main(int argc, const char **argv) {
 
    loguru::init(argc, argv);
 
-   eastl::vector<eastl::string> gitRepositories;
-
    initJobSystem();
+
+   eastl::vector<eastl::string> gitRepositories;
+   loadGitRepositoriesFromFile(gitRepositories);
 
    if(args["scan"] || true) {
       LOG_F(0, "doing scan of directories");
+      eastl::vector<eastl::string> newGitRepositories;
       eastl::vector<eastl::string> directories;
 
       EA::IO::EntryFindData efd;
@@ -65,7 +65,7 @@ int main(int argc, const char **argv) {
 
                   if(EA::IO::StrEq16(efd.mName, u".git/")) {
                      LOG_F(1, "found git repo in %s", currentDirectory.c_str());
-                     gitRepositories.pushBack(currentDirectory);
+                     newGitRepositories.pushBack(currentDirectory);
                   } else {
                      if(!EA::IO::StrEq16(efd.mName, u"./") && !EA::IO::StrEq16(efd.mName, u"../")) {
                         directories.pushBack(tmp);                        
@@ -77,9 +77,14 @@ int main(int argc, const char **argv) {
          }         
       }
       //TODO: save to file
-   } else {
-      //TODO: use saved cache file with git repositories available
-   }
+
+      if(args["details"]) {
+         //if file is already present we can try to find new/deleted repositories
+         //compare to original file!
+      }
+
+      gitRepositories = newGitRepositories;
+   } 
 
    if(args["check"]) {
       LOG_F(0, "checking all directories for updates");
