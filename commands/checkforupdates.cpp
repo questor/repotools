@@ -35,7 +35,7 @@ void checkSingleRepo(WorkerParams *params) {
    results.enqueue(callParams.output);
 }
 
-void checkForUpdates(std::map<std::string, docopt::value> &args, eastl::vector<eastl::string> &repos) {
+void checkForUpdates(AnyOption &options, eastl::vector<eastl::string> &repos) {
    for(int i=0; i<repos.size(); ++i) {
       CheckUpdateParameters *params = new CheckUpdateParameters();
       params->repositoryToCheck = repos[i];

@@ -1,6 +1,4 @@
 
-#include "docopt.cpp/docopt.h"
-
 #define LOGURU_IMPLEMENTATION 1
 #include "loguru/loguru.hpp"
 
@@ -13,35 +11,40 @@
 #include "commands/checkforupdates.h"
 #include "jsonio.h"
 
-int main(int argc, const char **argv) {
+#include "anyoption/anyoption.h"
 
-   static const char USAGE[] =
-   R"(RepoTool!
-       Usage:
-         repotool (-h | --help)
-         repotool --version
-         repotool [-v <nr>] [-d|--details] scan
-         repotool [-v <nr>] check
-         repotool [-v <nr>] update
-         repotool [-v <nr>] savestate <filename>
-    
-       Options:
-         -d --details      show details (new/deleted repos)
-   )";
+int main(int argc, char **argv) {
 
-   std::map<std::string, docopt::value> args
-      = docopt::docopt(USAGE, { argv + 1, argv + argc },
-                       true,               // show help if requested
-                       "repotool 0.2");  // version string
+   AnyOption opt;
 
-   loguru::init(argc, argv);
+   opt.addUsage("-h  --help                     prints this help");
+   opt.addUsage("    --version                  show version");
+   opt.addUsage("-v X                           verbose level");
+   opt.addUsage("");
+   opt.addUsage("-d  --details  scan");
+   opt.addUsage("               update");
+   opt.addUsage("               savestate");
+
+   opt.setFlag("help", 'h');
+   opt.setFlag("version");
+   opt.setOption('v');
+   opt.setFlag("details", 'd');
+
+   opt.processCommandArgs(argc, argv);
+
+   if(!opt.hasOptions()) {
+      opt.printUsage();
+      return -1;
+   }
+
+   loguru::init(argc, (const char **)argv);
 
    initJobSystem();
 
    eastl::vector<eastl::string> gitRepositories;
    loadGitRepositoriesFromFile(gitRepositories);
 
-   if(args["scan"] || true) {
+   if(strcmp("scan", opt.getArgv(opt.getArgc()-1)) == 0) {
       LOG_F(0, "doing scan of directories");
       eastl::vector<eastl::string> newGitRepositories;
       eastl::vector<eastl::string> directories;
@@ -77,20 +80,23 @@ int main(int argc, const char **argv) {
             EA::IO::entryFindFinish(&efd);
          }         
       }
-      //TODO: save to file
 
-      if(args["details"]) {
+      if(opt.getFlag('d') || opt.getFlag("details")) {
          //if file is already present we can try to find new/deleted repositories
          //compare to original file!
       }
 
       gitRepositories = newGitRepositories;
       saveGitRepositoriesToFile(gitRepositories);
-   } 
+      shutdownJobSystem();
+      return 0;
+   }
 
-   if(args["check"]) {
+   loadGitRepositoriesFromFile(gitRepositories);
+
+   if(strcmp("check", opt.getArgv(opt.getArgc()-1)) == 0) {
       LOG_F(0, "checking all directories for updates");
-      checkForUpdates(args, gitRepositories);
+      checkForUpdates(opt, gitRepositories);
 
    }
 

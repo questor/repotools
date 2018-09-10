@@ -36,7 +36,7 @@ Program {
       {Config="linux_x86-*-*"; "extlibs/reproc/src/c/posix/process.c"},
       {Config="linux_x86-*-*"; "extlibs/reproc/src/c/posix/reproc.c"},
 
-      "extlibs/docopt.cpp/docopt.cpp",
+      "extlibs/anyoption/anyoption.cpp",
 
 --      "extlibs/eacoreallocator/newdelete.cpp",
    },

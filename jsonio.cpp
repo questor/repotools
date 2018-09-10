@@ -7,6 +7,7 @@
 using json = nlohmann::json;
 
 void loadGitRepositoriesFromFile(eastl::vector<eastl::string> &gitRepositories) {
+   gitRepositories.clear();
    FILE *fp = fopen(".repotool.cache", "rb");
    if(!fp) {
       //TODO: error handling?
@@ -22,8 +23,6 @@ void loadGitRepositoriesFromFile(eastl::vector<eastl::string> &gitRepositories) 
 
    json j = json::parse(filebuffer);
    delete[] filebuffer;
-
-   gitRepositories.clear();
 
    //now iterate over file
    json array = j["repos"];
