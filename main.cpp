@@ -11,6 +11,7 @@
 
 #include "workersystem.h"
 #include "commands/checkforupdates.h"
+#include "jsonio.h"
 
 int main(int argc, const char **argv) {
 
@@ -84,6 +85,7 @@ int main(int argc, const char **argv) {
       }
 
       gitRepositories = newGitRepositories;
+      saveGitRepositoriesToFile(gitRepositories);
    } 
 
    if(args["check"]) {

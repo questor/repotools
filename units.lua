@@ -21,7 +21,7 @@ Program {
       "eastlglue.cpp",
       "callexecutable.cpp",
       "workersystem.cpp",
-      "jsonui.cpp",
+      "jsonio.cpp",
 
       "commands/checkforupdates.cpp",
 
