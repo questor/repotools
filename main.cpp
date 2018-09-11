@@ -18,14 +18,21 @@ int main(int argc, char **argv) {
 
    opt.addUsage("-h  --help                     prints this help");
    opt.addUsage("    --version                  show version");
-   opt.addUsage("-o  --ouput <filename>         output to file; default to console");
+   opt.addUsage("-o  --ouput <filename>         output to file(default to console)");
    opt.addUsage("-v X                           verbose level");
-   opt.addUsage("-t  --type <type>              reporttype(txt, html) default:txt");
-   opt.addUsage("-w  --work <directory>         set working directory(default .");
+   opt.addUsage("-t  --type <type>              reporttype:txt, html(default:txt)");
+   opt.addUsage("-w  --work <directory>         set working directory(default '.'");
    opt.addUsage("");
    opt.addUsage("-d  --details  scan");
-   opt.addUsage("               update");
-   opt.addUsage("               savestate");
+   opt.addUsage("               check");
+   opt.addUsage("               update(TODO!)");
+   opt.addUsage("               findChanges(TODO!)")
+   opt.addUsage("               savestate(TODO!)");
+   opt.addUsage("               genUpdateReport(TODO!)");
+
+//find changes: git diff-index --name-only --ignore-submodules HEAD --
+
+
 
    opt.setFlag("help", 'h');
    opt.setFlag("version");
