@@ -25,6 +25,7 @@ Program {
       "report.cpp",
 
       "commands/checkforupdates.cpp",
+      "commands/scandirectories.cpp",
 
       "extlibs/reproc/src/c/common.c",
       {Config="win32-*-*"; "extlibs/reproc/src/c/windows/handle.c"},

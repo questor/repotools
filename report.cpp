@@ -1,6 +1,14 @@
 
 #include "report.h"
 
+eastl::string removeNewlines(eastl::string &source) {
+   eastl::string result = source;
+   result.erase(0, result.findFirstNotOf(" \n\r\t"));
+   result.erase(result.findLastNotOf(" \n\r\t") + 1);
+   return result;
+}
+
+
 void generateAndOutputReport(AnyOption &options, eastl::string reportFilename, json reportData) {
    eastl::string reportExtension = "txt";
    char *extOption = options.getValue('t');
@@ -19,8 +27,15 @@ void generateAndOutputReport(AnyOption &options, eastl::string reportFilename, j
    if(options.getValue('o') == nullptr && options.getValue("output") == nullptr) {
       printf("%s", renderedReport.c_str());
    } else {
-      //TODO: output to file
+      eastl::string filename;
+      if(options.getValue('o')) {
+         filename = options.getValue('o');
+      } else {
+         filename = options.getValue("output");
+      }
+      FILE *fp = fopen(filename.c_str(), "wb");
+      fprintf(fp, "%s", renderedReport.c_str());
+      fclose(fp);
    }
-
 }
 

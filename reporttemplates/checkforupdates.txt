@@ -1,0 +1,10 @@
+{% for name in reposUpToDate -%}
+   repo is up to date: {{ name }}
+{% endfor %}
+
+===================================
+
+{% for name in reposNeedUpdate -%}
+   repo needs update: {{ name }}
+{% endfor %}
+

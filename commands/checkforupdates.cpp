@@ -4,6 +4,8 @@
 #include "workersystem.h"
 #include "concurrentqueue/concurrentqueue.h"
 
+#include "report.h"
+
 #include "loguru/loguru.hpp"
 
 class CheckUpdateParameters : public WorkerParams {
@@ -26,13 +28,38 @@ void checkSingleRepo(WorkerParams *params) {
    } CallParams;
    bool callExecutable(CallParams *params);
 #endif
-   CallParams callParams;
-   callParams.workingDir = checkParams->repositoryToCheck.c_str();
-   callParams.process = "git";
-   callParams.arguments.pushBack("status");
-   callParams.arguments.pushBack("-s");
-   callExecutable(&callParams);
-   results.enqueue(callParams.output);
+   CallParams callParamsLocal;
+   callParamsLocal.workingDir = checkParams->repositoryToCheck.c_str();
+   callParamsLocal.process = "git";
+   callParamsLocal.arguments.pushBack("rev-parse");
+   callParamsLocal.arguments.pushBack("@{0}");
+   callExecutable(&callParamsLocal);
+
+   CallParams callParamsRemote;
+   callParamsRemote.workingDir = checkParams->repositoryToCheck.c_str();
+   callParamsRemote.process = "git";
+   callParamsRemote.arguments.pushBack("ls-remote");
+   callParamsRemote.arguments.pushBack("origin");
+   callParamsRemote.arguments.pushBack("-h");
+   callParamsRemote.arguments.pushBack("refs/heads/master");
+   callExecutable(&callParamsRemote);
+
+   callParamsLocal.output = removeNewlines(callParamsLocal.output);
+   callParamsRemote.output = removeNewlines(callParamsRemote.output);
+
+   eastl::string result;
+   if(callParamsRemote.output.find(callParamsLocal.output) == 0) {
+      //is up to date
+      result = "u" + checkParams->repositoryToCheck;     //marker for "upToDate"
+   } else {
+      result = "n" + checkParams->repositoryToCheck;     //marker for "needsUpdate"
+   }
+
+   LOG_F(3, result.c_str());
+   LOG_F(3, callParamsRemote.output.c_str());
+   LOG_F(3, callParamsLocal.output.c_str());
+
+   results.enqueue(result);
 }
 
 void checkForUpdates(AnyOption &options, eastl::vector<eastl::string> &repos) {
@@ -44,8 +71,19 @@ void checkForUpdates(AnyOption &options, eastl::vector<eastl::string> &repos) {
 
    waitForAllJobsFinished();
 
+   json reportData;
+   json reposUpToDate = json::array();
+   json reposNeedUpdate = json::array();
    eastl::string result;
    while(results.try_dequeue(result)) {
-      printf("result: %s\n", result.c_str());
+      if(result[0] == 'u') {
+         reposUpToDate.push_back(result.substr(1).c_str());
+      } else {
+         reposNeedUpdate.push_back(result.substr(1).c_str());
+      }
    }
+   reportData["reposUpToDate"] = reposUpToDate;
+   reportData["reposNeedUpdate"] = reposNeedUpdate;
+
+   generateAndOutputReport(options, "checkforupdates", reportData);
 }
