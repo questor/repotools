@@ -24,7 +24,7 @@ Program {
       "jsonio.cpp",
       "report.cpp",
 
-      "commands/checkforupdates.cpp",
+      "commands/checkforupdatesonserver.cpp",
       "commands/scandirectories.cpp",
 
       "extlibs/reproc/src/c/common.c",

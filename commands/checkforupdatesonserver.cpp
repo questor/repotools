@@ -1,5 +1,5 @@
 
-#include "checkforupdates.h"
+#include "checkforupdatesonserver.h"
 #include "callexecutable.h"
 #include "workersystem.h"
 #include "concurrentqueue/concurrentqueue.h"
@@ -62,7 +62,7 @@ void checkSingleRepo(WorkerParams *params) {
    results.enqueue(result);
 }
 
-void checkForUpdates(AnyOption &options, eastl::vector<eastl::string> &repos) {
+void checkForUpdatesOnServer(AnyOption &options, eastl::vector<eastl::string> &repos) {
    for(int i=0; i<repos.size(); ++i) {
       CheckUpdateParameters *params = new CheckUpdateParameters();
       params->repositoryToCheck = repos[i];
@@ -85,5 +85,5 @@ void checkForUpdates(AnyOption &options, eastl::vector<eastl::string> &repos) {
    reportData["reposUpToDate"] = reposUpToDate;
    reportData["reposNeedUpdate"] = reposNeedUpdate;
 
-   generateAndOutputReport(options, "checkforupdates", reportData);
+   generateAndOutputReport(options, "checkforupdatesonserver", reportData);
 }
