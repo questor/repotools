@@ -6,12 +6,17 @@
 #include "eaio/FnEncode.h"
 
 #include "eastl/vector.h"
+#include "eastl/bitvector.h"
 
 #include "workersystem.h"
 #include "commands/checkforupdates.h"
 #include "jsonio.h"
+#include "report.h"
 
 #include "anyoption/anyoption.h"
+
+#include "json/json.hpp"
+using json = nlohmann::json;
 
 int main(int argc, char **argv) {
 
@@ -19,7 +24,9 @@ int main(int argc, char **argv) {
 
    opt.addUsage("-h  --help                     prints this help");
    opt.addUsage("    --version                  show version");
+   opt.addUsage("-o  --ouput <filename>         output to file; default to console");
    opt.addUsage("-v X                           verbose level");
+   opt.addUsage("-t  --type <type>              reporttype(txt, html) default:txt");
    opt.addUsage("");
    opt.addUsage("-d  --details  scan");
    opt.addUsage("               update");
@@ -29,6 +36,7 @@ int main(int argc, char **argv) {
    opt.setFlag("version");
    opt.setOption('v');
    opt.setFlag("details", 'd');
+   opt.setOption("option", 'o');
 
    opt.processCommandArgs(argc, argv);
 
@@ -83,7 +91,46 @@ int main(int argc, char **argv) {
 
       if(opt.getFlag('d') || opt.getFlag("details")) {
          //if file is already present we can try to find new/deleted repositories
-         //compare to original file!
+         json reportData;
+
+         json reposArray = json::array();
+         for(int i=0; i<newGitRepositories.size(); ++i) {
+            reposArray.push_back(newGitRepositories[i].c_str());
+         }
+         reportData["repositories"] = reposArray;
+
+         eastl::bitvector<> newRepoBits;
+         newRepoBits.resize(newGitRepositories.size(), false);
+         eastl::bitvector<> oldRepoBits;
+         oldRepoBits.resize(gitRepositories.size(), false);
+
+         for(int i=0; i<gitRepositories.size(); ++i) {
+            for(int j=0; j<newGitRepositories.size(); ++j) {
+               if(gitRepositories[i].compare(newGitRepositories[j]) == 0) {
+                  newRepoBits[j] = true;
+                  oldRepoBits[i] = true;
+                  break;
+               }
+            }
+         }
+
+         json addedArray = json::array();
+         for(int i=0; i<newGitRepositories.size(); ++i) {
+            if(newRepoBits[i] == false) {
+               addedArray.push_back(newGitRepositories[i].c_str());
+            }
+         }
+         reportData["addedRepositories"] = addedArray;
+
+         json deletedArray = json::array();
+         for(int i=0; i<gitRepositories.size(); ++i) {
+            if(oldRepoBits[i] == false) {
+               deletedArray.push_back(gitRepositories[i].c_str());
+            }
+         }
+         reportData["deletedRepositories"] = deletedArray;
+
+         generateAndOutputReport(opt, "repoupdate", reportData);
       }
 
       gitRepositories = newGitRepositories;
@@ -91,8 +138,6 @@ int main(int argc, char **argv) {
       shutdownJobSystem();
       return 0;
    }
-
-   loadGitRepositoriesFromFile(gitRepositories);
 
    if(strcmp("check", opt.getArgv(opt.getArgc()-1)) == 0) {
       LOG_F(0, "checking all directories for updates");

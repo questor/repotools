@@ -22,6 +22,7 @@ Program {
       "callexecutable.cpp",
       "workersystem.cpp",
       "jsonio.cpp",
+      "report.cpp",
 
       "commands/checkforupdates.cpp",
 

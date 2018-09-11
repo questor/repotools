@@ -38,7 +38,7 @@ SOFTWARE.
 #include <iostream>
 #include <locale>
 #include <map>
-#include <nlohmann/json.hpp>
+#include "json/json.hpp"
 #include <regex>
 #include <string>
 #include <sstream>
