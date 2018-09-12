@@ -24,8 +24,10 @@ bool callExecutable(CallParams *params) {
    error = reproc_start(&callStatus, argc, argv, params->workingDir.c_str());
    if(error == REPROC_FILE_NOT_FOUND) {
       //TODO: error handling
+      LOG_F(5, "REPROC_FILE_NOT_FOUND");
       return false;
    } else if(error) {
+      LOG_F(5, "reproc_start error!");
       //TODO: error handling
       return false;
    }
