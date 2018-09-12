@@ -20,6 +20,7 @@ void generateAndOutputReport(AnyOption &options, eastl::string reportFilename, j
    }
 
    inja::Environment injaEnv = inja::Environment();
+   injaEnv.set_element_notation(inja::ElementNotation::Dot);
    eastl::string fullReportFilename = "reporttemplates/" + reportFilename + "." + reportExtension;
    inja::Template templ = injaEnv.parse_template(fullReportFilename.c_str());
    std::string renderedReport = injaEnv.render_template(templ, reportData);

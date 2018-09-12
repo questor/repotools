@@ -55,11 +55,8 @@ void checkSingleRepo(WorkerParams *params) {
       result = "n" + checkParams->repositoryToCheck;     //marker for "needsUpdate"
    }
 
-   LOG_F(3, result.c_str());
-   LOG_F(3, callParamsRemote.output.c_str());
-   LOG_F(3, callParamsLocal.output.c_str());
-
    results.enqueue(result);
+   delete checkParams;
 }
 
 void checkForUpdatesOnServer(AnyOption &options, eastl::vector<eastl::string> &repos) {

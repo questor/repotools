@@ -24,7 +24,6 @@ void workerThreadFunc() {
       bool successfull = workerJobQueue.wait_dequeue_timed(descr, 100);
       if(successfull) {
          descr.func(descr.params);
-         delete descr.params;
          pendingJobs.fetch_add(-1, std::memory_order_release);         
       }
    }
@@ -44,6 +43,7 @@ void shutdownJobSystem() {
    }   
 }
 
+// parameters need to be deleted by the caller!
 void addJob(std::function<void(WorkerParams*)> job, WorkerParams *params) {
    JobDescr descr;
    descr.func = job;
@@ -59,7 +59,6 @@ void waitForAllJobsFinished() {
          continue;
       }
       descr.func(descr.params);
-      delete descr.params;
       pendingJobs.fetch_add(-1, std::memory_order_release);
    }
 }

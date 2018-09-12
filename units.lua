@@ -26,6 +26,8 @@ Program {
 
       "commands/checkforupdatesonserver.cpp",
       "commands/scandirectories.cpp",
+      "commands/savestate.cpp",
+      "commands/pullrepositories.cpp",
 
       "extlibs/reproc/src/c/common.c",
       {Config="win32-*-*"; "extlibs/reproc/src/c/windows/handle.c"},

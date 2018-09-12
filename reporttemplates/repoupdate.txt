@@ -11,7 +11,7 @@ repositories deleted from last run:
 {% endfor %}
 
 ===================================
-repostiories added in this run:
+repositories added in this run:
 {% for name in addedRepositories -%}
    {{ name }}
 {% endfor %}
