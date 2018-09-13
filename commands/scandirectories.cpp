@@ -1,7 +1,7 @@
 
 #include "scandirectories.h"
 
-#include "jsonio.h"
+#include "cachedrepositoryio.h"
 #include "report.h"
 
 #include "eastl/bitvector.h"

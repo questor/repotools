@@ -11,7 +11,7 @@
 #include "commands/savestate.h"
 #include "commands/pullrepositories.h"
 #include "commands/generateupdatereport.h"
-#include "jsonio.h"
+#include "cachedrepositoryio.h"
 
 #include "anyoption/anyoption.h"
 
@@ -89,7 +89,8 @@ int main(int argc, char **argv) {
       pullRepositories(opt, gitRepositories);
    }
 
-   if(strcasecmp(("genUpdateReport", opt.getArgv(opt.getArgc()-2)) == 0) || ("genUpdateReport", opt.getArgv(opt.getArgc()-3)) == 0) {
+   if((strcasecmp("genUpdateReport", opt.getArgv(opt.getArgc()-2)) == 0) || 
+      (strcasecmp("genUpdateReport", opt.getArgv(opt.getArgc()-3)) == 0)) {
       LOG_F(1, "generate update report");
       generateUpdateReport(opt, gitRepositories);
    }

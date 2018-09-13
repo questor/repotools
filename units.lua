@@ -21,13 +21,15 @@ Program {
       "eastlglue.cpp",
       "callexecutable.cpp",
       "workersystem.cpp",
-      "jsonio.cpp",
+      "cachedrepositoryio.cpp",
       "report.cpp",
+      "repostateio.cpp",
 
       "commands/checkforupdatesonserver.cpp",
       "commands/scandirectories.cpp",
       "commands/savestate.cpp",
       "commands/pullrepositories.cpp",
+      "commands/generateupdatereport.cpp",
 
       "extlibs/reproc/src/c/common.c",
       {Config="win32-*-*"; "extlibs/reproc/src/c/windows/handle.c"},

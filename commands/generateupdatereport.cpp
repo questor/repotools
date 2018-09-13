@@ -8,14 +8,25 @@
 
 #include "loguru/loguru.hpp"
 
+#include "json/json.hpp"
+using json = nlohmann::json;
+
+#include "repostateio.h"
+
 class GenerateUpdateReportParameters : public WorkerParams {
 public:
    eastl::string repositoryToCheck;
    eastl::string oldRevision;
-   eastl::string updatesDone;
+   eastl::string newRevision;
+   eastl::string updateLog;
 };
 moodycamel::ConcurrentQueue<GenerateUpdateReportParameters*> resultsUpdateReport;
 
+
+// generate report what was pulled in the last pull:
+//   git diff --name-status ORIG_HEAD..
+
+// git log --oneline REV..HEAD
 
 void updateReportSingleRepo(WorkerParams *params) {
    GenerateUpdateReportParameters *saveParams = (GenerateUpdateReportParameters*)params;
@@ -23,23 +34,65 @@ void updateReportSingleRepo(WorkerParams *params) {
    CallParams callParams;
    callParams.workingDir = saveParams->repositoryToCheck.c_str();
    callParams.process = "git";
-   callParams.arguments.pushBack("rev-parse");
-   callParams.arguments.pushBack("@{0}");
+   callParams.arguments.pushBack("log");
+   callParams.arguments.pushBack("--oneline");
+   callParams.arguments.pushBack(saveParams->oldRevision+".."+saveParams->newRevision);
    callExecutable(&callParams);
 
    callParams.output = removeNewlines(callParams.output);
 
-   GenerateUpdateReportParameters->revision = callParams.output;
+   saveParams->updateLog = callParams.output;
    resultsUpdateReport.enqueue(saveParams);
 }
 
 void generateUpdateReport(AnyOption &options, eastl::vector<eastl::string> &repos) {
+   int oldFilenameArgcIndex = 1;
+   int newFilenameArgcIndex = -1;
 
-   //TODO: read in file with old content
+   if(strcasecmp("genUpdateReport", options.getArgv(options.getArgc()-3)) == 0) {
+      oldFilenameArgcIndex = 2;
+      newFilenameArgcIndex = 1;
+   }
+
+   nlohmann::json oldState = loadState(options.getArgv(options.getArgc()-oldFilenameArgcIndex));
+
+   nlohmann::json newState;
+   if(newFilenameArgcIndex != -1) {
+      newState = loadState(options.getArgv(options.getArgc()-newFilenameArgcIndex));
+   }
 
    for(int i=0; i<repos.size(); ++i) {
       GenerateUpdateReportParameters *params = new GenerateUpdateReportParameters();
       params->repositoryToCheck = repos[i];
+
+      bool oldFound = false;
+      for(json::iterator it = oldState.begin(); it != oldState.end(); ++it) {
+         json element = *it;
+         if(repos[i].compare(element["repoPath"]) == 0) {
+            params->oldRevision = element["revision"];
+            oldFound = true;
+            break;
+         }
+      }
+      assert(oldFound);
+
+      if(newFilenameArgcIndex != -1) {
+         bool newFound = false;
+         for(json::iterator it = newState.begin(); it != newState.end(); ++it) {
+            json element = *it;
+            if(repos[i].compare(element["repoPath"] == 0) {
+               params->newRevision = element["revision"];
+               newFound = true;
+               break;
+            }
+         }
+         assert(newFound);
+      } else {
+         params->newRevision = "HEAD";
+      }
+
+      //check if oldRevision == newRevision?
+
       addJob(updateReportSingleRepo, params);
    }
 
@@ -47,10 +100,10 @@ void generateUpdateReport(AnyOption &options, eastl::vector<eastl::string> &repo
 
    json reportData = json::array();
    GenerateUpdateReportParameters *result;
-   while(resultsSaveState.try_dequeue(result)) {
+   while(resultsUpdateReport.try_dequeue(result)) {
       json oneResult;
       oneResult["repoPath"] = result->repositoryToCheck.c_str();
-      oneResult["revision"] = result->revision.c_str();
+      oneResult["updateLog"] = result->updateLog.c_str();
       reportData.push_back(oneResult);
       delete result;
    }

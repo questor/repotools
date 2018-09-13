@@ -5,6 +5,7 @@
 #include "concurrentqueue/concurrentqueue.h"
 
 #include "report.h"
+#include "repostateio.h"
 
 #include "loguru/loguru.hpp"
 
@@ -51,15 +52,7 @@ void saveState(AnyOption &options, eastl::vector<eastl::string> &repos) {
       delete result;
    }
 
-   FILE *fp = fopen(options.getArgv(options.getArgc()-1), "wb");
-   if(!fp) {
-      //TODO: error handling!
-      printf("could not open output file to save the state!\n");
-      return;
-   }
-   std::string dump = reportData.dump();
-   fwrite(dump.c_str(), sizeof(char), dump.length(), fp);
-   fclose(fp);
+   saveState(options.getArgv(options.getArgc()-1), reportData);
 
 //   generateAndOutputReport(options, "savestate", reportData);
 }
