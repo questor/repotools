@@ -11,6 +11,7 @@
 #include "commands/savestate.h"
 #include "commands/pullrepositories.h"
 #include "commands/generateupdatereport.h"
+#include "commands/exportrepositories.h"
 #include "cachedrepositoryio.h"
 
 #include "anyoption/anyoption.h"
@@ -32,6 +33,7 @@ int main(int argc, char **argv) {
    opt.addUsage("               savestate <statefile>");
    opt.addUsage("               pull");
    opt.addUsage("               genUpdateReport <oldState> [<newState>]");
+   opt.addUsage("               exportList <filename>");
    opt.addUsage("");
    opt.addUsage("               findChanges(TODO!)");
    opt.addUsage("               findAhead(TODO!)");
@@ -94,6 +96,12 @@ int main(int argc, char **argv) {
       LOG_F(1, "generate update report");
       generateUpdateReport(opt, gitRepositories);
    }
+
+   if(strcasecmp("exportlist", opt.getArgv(opt.getArgc()-2)) == 0) {
+      LOG_F(1, "export list of all repositories with their sources");
+      exportRepositories(opt, gitRepositories);
+   }
+
    shutdownJobSystem();
    return 0;
 }
