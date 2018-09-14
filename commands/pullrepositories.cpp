@@ -24,8 +24,6 @@ void pullSingleRepo(WorkerParams *params) {
    callParams.arguments.pushBack("pull");
    callExecutable(&callParams);
 
-   LOG_F(3, "pull result: %s", callParams.output.c_str());
-
    callParams.output = removeNewlines(callParams.output);
 
    pullParams->result = callParams.output;

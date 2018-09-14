@@ -68,8 +68,8 @@ void generateUpdateReport(AnyOption &options, eastl::vector<eastl::string> &repo
       bool oldFound = false;
       for(json::iterator it = oldState.begin(); it != oldState.end(); ++it) {
          json element = *it;
-         if(repos[i].compare(element["repoPath"]) == 0) {
-            params->oldRevision = element["revision"];
+         if(repos[i].compare(element["repoPath"].get<std::string>().c_str()) == 0) {
+            params->oldRevision = element["revision"].get<std::string>().c_str();
             oldFound = true;
             break;
          }
@@ -80,8 +80,8 @@ void generateUpdateReport(AnyOption &options, eastl::vector<eastl::string> &repo
          bool newFound = false;
          for(json::iterator it = newState.begin(); it != newState.end(); ++it) {
             json element = *it;
-            if(repos[i].compare(element["repoPath"] == 0) {
-               params->newRevision = element["revision"];
+            if(repos[i].compare(element["repoPath"].get<std::string>().c_str()) == 0) {
+               params->newRevision = element["revision"].get<std::string>().c_str();
                newFound = true;
                break;
             }
@@ -98,15 +98,20 @@ void generateUpdateReport(AnyOption &options, eastl::vector<eastl::string> &repo
 
    waitForAllJobsFinished();
 
-   json reportData = json::array();
+   json updateLogs = json::array();
    GenerateUpdateReportParameters *result;
    while(resultsUpdateReport.try_dequeue(result)) {
-      json oneResult;
-      oneResult["repoPath"] = result->repositoryToCheck.c_str();
-      oneResult["updateLog"] = result->updateLog.c_str();
-      reportData.push_back(oneResult);
+      if(result->updateLog.size() != 0) {
+         json oneResult;
+         oneResult["repoPath"] = result->repositoryToCheck.c_str();
+         oneResult["updateLog"] = result->updateLog.c_str();
+         updateLogs.push_back(oneResult);
+      }
       delete result;
    }
 
-//   generateAndOutputReport(options, "savestate", reportData);
+   json reportData;
+   reportData["updatelogs"] = updateLogs;
+
+   generateAndOutputReport(options, "updatereport", reportData);
 }
