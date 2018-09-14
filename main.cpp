@@ -35,14 +35,22 @@ int main(int argc, char **argv) {
    opt.addUsage("               genUpdateReport <oldState> [<newState>]");
    opt.addUsage("               exportList <filename>");
    opt.addUsage("");
-   opt.addUsage("               findChanges(TODO!)");
-   opt.addUsage("               findAhead(TODO!)");
+//   opt.addUsage("               findChanges(TODO!)");
+//   opt.addUsage("               findAhead(TODO!)");
 
 //find changes: git diff-index --name-only --ignore-submodules HEAD --
 //   finds locally changed files not submitted
 
 //find ahead: git status -sb => ahead in the string?
 //   finds commits submited locally, but not pushed
+
+   opt.addUsage("detailed explanation:");
+   opt.addUsage("scan - scans directory and it's subdirectories for git repositories");
+   opt.addUsage("checkForUpdates - checks all repositories for updates on the server");
+   opt.addUsage("savestate - stores each latest commit of each repository to a file");
+   opt.addUsage("pull - pull all repositories");
+   opt.addUsage("genUpdateReport - generate list of changes for each repository");
+   opt.addUsage("exportList - exports a list of all repositories with directory and git source url");
 
    opt.setFlag("help", 'h');
    opt.setFlag("version");
