@@ -18,6 +18,8 @@
 
 #include "strings.h"
 
+#include "rang/include/rang.hpp"
+
 int main(int argc, char **argv) {
    AnyOption opt;
 
