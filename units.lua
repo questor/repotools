@@ -31,6 +31,7 @@ Program {
       "commands/pullrepositories.cpp",
       "commands/generateupdatereport.cpp",
       "commands/exportrepositories.cpp",
+      "commands/mergelist.cpp",
 
       "extlibs/reproc/src/c/common.c",
       {Config="win32-*-*"; "extlibs/reproc/src/c/windows/handle.c"},

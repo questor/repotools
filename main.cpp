@@ -12,6 +12,7 @@
 #include "commands/pullrepositories.h"
 #include "commands/generateupdatereport.h"
 #include "commands/exportrepositories.h"
+#include "commands/mergelist.h"
 #include "cachedrepositoryio.h"
 
 #include "anyoption/anyoption.h"
@@ -36,6 +37,7 @@ int main(int argc, char **argv) {
    opt.addUsage("               pull");
    opt.addUsage("               genUpdateReport <oldState> [<newState>]");
    opt.addUsage("               exportList <filename>");
+   opt.addUsage("               mergeList <filename>");
    opt.addUsage("");
 //   opt.addUsage("               findChanges(TODO!)");
 //   opt.addUsage("               findAhead(TODO!)");
@@ -53,6 +55,7 @@ int main(int argc, char **argv) {
    opt.addUsage("pull - pull all repositories");
    opt.addUsage("genUpdateReport - generate list of changes for each repository");
    opt.addUsage("exportList - exports a list of all repositories with directory and git source url");
+   opt.addUsage("mergeList - import list and create new repositories where needed");
 
    opt.setFlag("help", 'h');
    opt.setFlag("version");
@@ -74,7 +77,7 @@ int main(int argc, char **argv) {
    initJobSystem();
 
    eastl::vector<eastl::string> gitRepositories;
-   loadGitRepositoriesFromFile(gitRepositories);
+   loadGitRepositoriesFromFile(".repotool.cache", gitRepositories);
 
    if(strcasecmp("scan", opt.getArgv(opt.getArgc()-1)) == 0) {
       LOG_F(1, "doing scan of directories");
@@ -110,6 +113,11 @@ int main(int argc, char **argv) {
    if(strcasecmp("exportlist", opt.getArgv(opt.getArgc()-2)) == 0) {
       LOG_F(1, "export list of all repositories with their sources");
       exportRepositories(opt, gitRepositories);
+   }
+
+   if(strcasecmp("mergelist", opt.getArgv(opt.getArgc()-2)) == 0) {
+      LOG_F(1, "merge list and clone new ones");
+      mergeList(opt, gitRepositories);
    }
 
    shutdownJobSystem();

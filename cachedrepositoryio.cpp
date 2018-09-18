@@ -6,9 +6,9 @@
 #include "json/json.hpp"
 using json = nlohmann::json;
 
-void loadGitRepositoriesFromFile(eastl::vector<eastl::string> &gitRepositories) {
+void loadGitRepositoriesFromFile(const char *filename, eastl::vector<eastl::string> &gitRepositories) {
    gitRepositories.clear();
-   FILE *fp = fopen(".repotool.cache", "rb");
+   FILE *fp = fopen(filename, "rb");
    if(!fp) {
       //TODO: error handling?
       return;
