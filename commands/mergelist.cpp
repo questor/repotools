@@ -46,9 +46,15 @@ void createRepo(WorkerParams *params) {
 
 void mergeList(AnyOption &options, eastl::vector<eastl::string> &repos) {
 
+   typedef struct {
+      eastl::string directory;
+      eastl::string sourceUrl;
+   } Item;
+
    //LOAD NEW LIST
-   eastl::vector<eastl::string> toMergeRepositories;
-   loadGitRepositoriesFromFile(options.getArgv(options.getArgc()-1), toMergeRepositories);
+   eastl::vector<Item> toMergeRepositories;
+
+//   loadGitRepositoriesFromFile(options.getArgv(options.getArgc()-1), toMergeRepositories);
 
    //MERGE WITH CURRENT ONE AND REMOVE ALREADY EXISTING ENTRIES
    eastl::bitvector<> newRepoBits;
@@ -56,7 +62,7 @@ void mergeList(AnyOption &options, eastl::vector<eastl::string> &repos) {
 
    for(int i=0; i<toMergeRepositories.size(); ++i) {
       for(int j=0; j<repos.size(); ++j) {
-         if(toMergeRepositories[i].compare(repos[j]) == 0) {
+         if(toMergeRepositories[i]["directory"].compare(repos[j]) == 0) {
             newRepoBits[i] = false;
             break;
          }
@@ -76,5 +82,5 @@ void mergeList(AnyOption &options, eastl::vector<eastl::string> &repos) {
    waitForAllJobsFinished();
 
    //SAVE NEW LIST
-   saveGitRepositoriesToFile(repos);
+   //saveGitRepositoriesToFile(repos);
 }
