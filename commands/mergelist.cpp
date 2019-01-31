@@ -62,7 +62,7 @@ void mergeList(AnyOption &options, eastl::vector<eastl::string> &repos) {
 
    for(int i=0; i<toMergeRepositories.size(); ++i) {
       for(int j=0; j<repos.size(); ++j) {
-         if(toMergeRepositories[i]["directory"].compare(repos[j]) == 0) {
+         if(toMergeRepositories[i].directory.compare(repos[j]) == 0) {
             newRepoBits[i] = false;
             break;
          }
