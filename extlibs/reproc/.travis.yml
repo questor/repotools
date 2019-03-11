@@ -1,0 +1,63 @@
+dist: trusty
+# Use generic to avoid travis-ci overwriting CC and CXX
+# See: https://stackoverflow.com/questions/35110123/travis-ci-with-c14-and-linux
+language: generic
+
+# Stops Leak Sanitizer from crashing
+sudo: true
+
+notifications:
+  email: false
+
+env:
+  - REPROC_SANITIZERS=ON
+
+matrix:
+  fast_finish: true
+  include:
+    - os: linux
+      env:
+        - CC=gcc
+        - CXX=g++
+        - REPROC_SANITIZERS=OFF
+
+    - os: linux
+      env:
+        - CC=clang
+        - CXX=clang++
+
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-8
+      env:
+        - CC=gcc-8
+        - CXX=g++-8
+
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty-6.0
+            - ubuntu-toolchain-r-test
+          packages:
+            - clang-6.0
+      env:
+        - CC=clang-6.0
+        - CXX=clang++-6.0
+
+    - os: osx
+      env:
+        - CC=clang
+        - CXX=clang++
+
+script:
+  - cmake . -DREPROC_BUILD_TESTS=ON -DREPROC_BUILD_EXAMPLES=ON
+    -DREPROC_BUILD_CXX_WRAPPER=ON -DREPROC_CI=ON -DREPROC_TIDY=ON
+    -DREPROC_INSTALL=ON -DREPROC_FORMAT=ON -DCMAKE_BUILD_TYPE=Debug
+    -DBUILD_SHARED_LIBS=ON -DREPROC_SANITIZERS=$REPROC_SANITIZERS
+  - cmake --build . -- -j 2
+  - cmake --build . --target reproc-run-tests

@@ -66,7 +66,7 @@ int main(int argc, char **argv) {
 
    opt.processCommandArgs(argc, argv);
 
-   if(!opt.hasOptions()) {
+   if(!opt.hasOptions() || opt.getValue('h')) {
       opt.printUsage();
       return -1;
    }
