@@ -16,21 +16,23 @@
 
 class MergeListParameters : public WorkerParams {
 public:
-   eastl::string repositoryToClone;
+   eastl::string sourceUrl;
+   eastl::string directory;
 };
 
 void createRepo(WorkerParams *params) {
    MergeListParameters *saveParams = (MergeListParameters*)params;
 
+//TODO: create directory path one below the git repo?
 
-   EA::IO::Path::PathString8 path(saveParams->repositoryToClone.c_str());
+   EA::IO::Path::PathString8 path(saveParams->directory.c_str());
    EA::IO::Path::PathString8::iterator lastFolder = EA::IO::Path::getPathComponentStart(path.begin(), path.end(), -1);
 
    EA::IO::Path::PathString8 frontPath(path.begin(), lastFolder);
    EA::IO::Path::PathString8 dirPath(lastFolder, path.end());
 
    CallParams callParams;
-   callParams.workingDir = saveParams->repositoryToClone.c_str();
+   callParams.workingDir = saveParams->directory.c_str();
    callParams.process = "git";
    callParams.arguments.pushBack("clone");
    callParams.arguments.pushBack("@{0}");
@@ -46,15 +48,37 @@ void createRepo(WorkerParams *params) {
 
 void mergeList(AnyOption &options, eastl::vector<eastl::string> &repos) {
 
+   FILE *fp = fopen(options.getArgv(options.getArgc()-1), "rb");
+   if(!fp) {
+      //TODO: error handling!
+      printf("could not open input file to merge the list!\n");
+      return;
+   }
+   fseek(fp, 0, SEEK_END);
+   int contentLength = ftell(fp);
+   fseek(fp, 0, SEEK_SET);
+   char *content = new char[contentLength+10];
+   memset(content, 0, contentLength+10);
+   fread(content, sizeof(char), contentLength, fp);
+   fclose(fp);
+
+   json toMergeList = json::parse(content);
+   delete[] content;
+
    typedef struct {
       eastl::string directory;
       eastl::string sourceUrl;
    } Item;
-
-   //LOAD NEW LIST
    eastl::vector<Item> toMergeRepositories;
 
-//   loadGitRepositoriesFromFile(options.getArgv(options.getArgc()-1), toMergeRepositories);
+   for(json::iterator it = toMergeList.begin(); it != toMergeList.end(); ++it) {
+      json element = *it;
+
+      Item i;
+      i.directory = (*it)["directory"].get<std::string>().c_str();
+      i.sourceUrl = (*it)["sourceurl"].get<std::string>().c_str();
+      toMergeRepositories.pushBack(i);
+   }
 
    //MERGE WITH CURRENT ONE AND REMOVE ALREADY EXISTING ENTRIES
    eastl::bitvector<> newRepoBits;
@@ -73,7 +97,8 @@ void mergeList(AnyOption &options, eastl::vector<eastl::string> &repos) {
    for(int i=0; i<toMergeRepositories.size(); ++i) {
       if(newRepoBits[i] == true) {
          MergeListParameters *params = new MergeListParameters();
-         params->repositoryToClone = repos[i];
+         params->sourceUrl = toMergeRepositories[i].sourceUrl;
+         params->directory = toMergeRepositories[i].directory;
          addJob(createRepo, params);
          repos.pushBack(repos[i]);
       }

@@ -83,9 +83,12 @@ int main(int argc, char **argv) {
       LOG_F(1, "doing scan of directories");
       scanDirectories(opt, gitRepositories);
    } else {
-      if(gitRepositories.size() == 0) {
-         printf("no repositorie list found! please first scan and create the list.\n");
-         return -1;
+      //if the command is "mergelist" allow no prefilled repository list as we might do the initial merge
+      if(strcasecmp("mergelist", opt.getArgv(opt.getArgc()-2)) != 0) {
+         if(gitRepositories.size() == 0) {
+            printf("no repository list found! please first scan and create the list.\n");
+            return -1;
+         }
       }
    }
 
