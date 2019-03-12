@@ -9,6 +9,7 @@
 
 #include "eastl/bitvector.h"
 #include "eaio/PathString.h"
+#include "eaio/EAFileUtil.h"
 
 #include "loguru/loguru.hpp"
 
@@ -23,25 +24,28 @@ public:
 void createRepo(WorkerParams *params) {
    MergeListParameters *saveParams = (MergeListParameters*)params;
 
-//TODO: create directory path one below the git repo?
-
    EA::IO::Path::PathString8 path(saveParams->directory.c_str());
    EA::IO::Path::PathString8::iterator lastFolder = EA::IO::Path::getPathComponentStart(path.begin(), path.end(), -1);
 
    EA::IO::Path::PathString8 frontPath(path.begin(), lastFolder);
    EA::IO::Path::PathString8 dirPath(lastFolder, path.end());
 
+   eastl::string tempPath = eastl::string("./") + eastl::string(frontPath.c_str());
+   if(EA::IO::Directory::ensureExists(tempPath.c_str()) == false) {
+      printf("error creating directory %s\n", tempPath.c_str());
+   }
+
+   printf("syncing %s\n", saveParams->sourceUrl.c_str());
+
    CallParams callParams;
-   callParams.workingDir = saveParams->directory.c_str();
+   callParams.workingDir = frontPath.c_str();
    callParams.process = "git";
    callParams.arguments.pushBack("clone");
-   callParams.arguments.pushBack("@{0}");
-//   callExecutable(&callParams);
+   callParams.arguments.pushBack(saveParams->sourceUrl);
+   callParams.arguments.pushBack(dirPath.c_str());
+   callExecutable(&callParams);
 
-   printf("frontPath: %s\n", frontPath.c_str());
-   printf("dirPath: %s\n", dirPath.c_str());
-
-   callParams.output = removeNewlines(callParams.output);
+//   callParams.output = removeNewlines(callParams.output);
 
    delete saveParams;
 }
@@ -100,7 +104,7 @@ void mergeList(AnyOption &options, eastl::vector<eastl::string> &repos) {
          params->sourceUrl = toMergeRepositories[i].sourceUrl;
          params->directory = toMergeRepositories[i].directory;
          addJob(createRepo, params);
-         repos.pushBack(repos[i]);
+         repos.pushBack(toMergeRepositories[i].directory);
       }
    }
 
