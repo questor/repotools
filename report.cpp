@@ -1,5 +1,6 @@
 
 #include "report.h"
+#include "loguru/loguru.hpp"
 
 eastl::string removeNewlines(eastl::string &source) {
    eastl::string result = source;

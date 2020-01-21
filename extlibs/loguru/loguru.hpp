@@ -1744,12 +1744,12 @@ namespace loguru
 						"Invalid verbosity. Expected integer, INFO, WARNING, ERROR or OFF, got '%s'", value_str);
 				}
 			} else {
-				argv[arg_dest++] = argv[arg_it];
+//				argv[arg_dest++] = argv[arg_it];
 			}
 		}
 
 		argc = out_argc;
-		argv[argc] = nullptr;
+//		argv[argc] = nullptr;
 	}
 
 	static long long now_ns()

@@ -68,7 +68,7 @@ int main(int argc, char **argv) {
 
    if(!opt.hasOptions() || opt.getValue('h')) {
       opt.printUsage();
-      return -1;
+      return 0;
    }
 
    if(opt.getValue('v') != nullptr)
@@ -84,10 +84,12 @@ int main(int argc, char **argv) {
       scanDirectories(opt, gitRepositories);
    } else {
       //if the command is "mergelist" allow no prefilled repository list as we might do the initial merge
-      if(strcasecmp("mergelist", opt.getArgv(opt.getArgc()-2)) != 0) {
-         if(gitRepositories.size() == 0) {
-            printf("no repository list found! please first scan and create the list.\n");
-            return -1;
+      if(opt.getArgv(opt.getArgc()-2) != nullptr) {
+         if(strcasecmp("mergelist", opt.getArgv(opt.getArgc()-2)) != 0) {
+            if(gitRepositories.size() == 0) {
+               printf("no repository list found! please first scan and create the list.\n");
+               return -1;
+            }
          }
       }
    }
@@ -103,7 +105,7 @@ int main(int argc, char **argv) {
    }
 
    if(strcasecmp("pull", opt.getArgv(opt.getArgc()-1)) == 0) {
-      LOG_F(1, "pulling all repositories");
+         LOG_F(1, "pulling all repositories");
       pullRepositories(opt, gitRepositories);
    }
 
