@@ -31,24 +31,23 @@ void checkSingleRepo(WorkerParams *params) {
    CallParams callParamsLocal;
    callParamsLocal.workingDir = checkParams->repositoryToCheck.c_str();
    callParamsLocal.process = "git";
-   callParamsLocal.arguments.pushBack("rev-parse");
-   callParamsLocal.arguments.pushBack("@{0}");
+   callParamsLocal.arguments.pushBack("rev-list");
+   callParamsLocal.arguments.pushBack("--count");
+   callParamsLocal.arguments.pushBack("--left-right");
+   callParamsLocal.arguments.pushBack("@{upstream}...HEAD");
    callExecutable(&callParamsLocal);
 
-   CallParams callParamsRemote;
-   callParamsRemote.workingDir = checkParams->repositoryToCheck.c_str();
-   callParamsRemote.process = "git";
-   callParamsRemote.arguments.pushBack("ls-remote");
-   callParamsRemote.arguments.pushBack("origin");
-   callParamsRemote.arguments.pushBack("-h");
-   callParamsRemote.arguments.pushBack("refs/heads/master");
-   callExecutable(&callParamsRemote);
-
    callParamsLocal.output = removeNewlines(callParamsLocal.output);
-   callParamsRemote.output = removeNewlines(callParamsRemote.output);
+
+   //  0    0 -> none
+   //  x    0 -> behind
+   //  0    x -> ahead
+   //  other  -> diverged
+
+TODO!
 
    eastl::string result;
-   if(callParamsRemote.output.find(callParamsLocal.output) == 0) {
+   if(callParamsLocal.output.find(callParamsLocal.output) == 0) {
       //is up to date
       result = "u" + checkParams->repositoryToCheck;     //marker for "upToDate"
    } else {
