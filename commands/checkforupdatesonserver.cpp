@@ -44,14 +44,24 @@ void checkSingleRepo(WorkerParams *params) {
    //  0    x -> ahead
    //  other  -> diverged
 
-TODO!
+   int local = -1;
+   int remote = -1;
+
+   int numberArgsFound = sscanf(callParamsLocal.output.c_str(), "%d %d", &remote, &local);
 
    eastl::string result;
-   if(callParamsLocal.output.find(callParamsLocal.output) == 0) {
-      //is up to date
-      result = "u" + checkParams->repositoryToCheck;     //marker for "upToDate"
+   if(numberArgsFound == 2) {
+      if(remote == 0 && local == 0) {
+         result = "u" + checkParams->repositoryToCheck;     //marker for "upToDate"
+      } else if(remote != 0 && local == 0) {
+         result = "n" + checkParams->repositoryToCheck;     //marker for "needsUpdate"
+      } else if(remote == 0 && local != 0) {
+         result = "a" + checkParams->repositoryToCheck;     //marker for "ahead"
+      } else {
+         result = "d" + checkParams->repositoryToCheck;     //marker for "diverged"         
+      }
    } else {
-      result = "n" + checkParams->repositoryToCheck;     //marker for "needsUpdate"
+      result = "f" + checkParams->repositoryToCheck;     //marker for "failed to get status"      
    }
 
    results.enqueue(result);
@@ -70,16 +80,28 @@ void checkForUpdatesOnServer(AnyOption &options, eastl::vector<eastl::string> &r
    json reportData;
    json reposUpToDate = json::array();
    json reposNeedUpdate = json::array();
+   json reposAhead = json::array();
+   json reposDiverged = json::array();
+   json reposFailed = json::array();
    eastl::string result;
    while(results.try_dequeue(result)) {
       if(result[0] == 'u') {
          reposUpToDate.push_back(result.substr(1).c_str());
-      } else {
+      } else if(result[0] == 'n') {
          reposNeedUpdate.push_back(result.substr(1).c_str());
+      } else if(result[0] == 'a') {
+         reposAhead.push_back(result.substr(1).c_str());
+      } else if(result[0] == 'd') {
+         reposDiverged.push_back(result.substr(1).c_str());
+      } else if(result[0] == 'f') {
+         reposFailed.push_back(result.substr(1).c_str());
       }
    }
    reportData["reposUpToDate"] = reposUpToDate;
    reportData["reposNeedUpdate"] = reposNeedUpdate;
+   reportData["reposAhead"] = reposAhead;
+   reportData["reposDiverged"] = reposDiverged;
+   reportData["reposFailed"] = reposFailed;
 
    generateAndOutputReport(options, "checkforupdatesonserver", reportData);
 }

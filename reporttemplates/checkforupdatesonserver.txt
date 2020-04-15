@@ -1,5 +1,21 @@
 
+=== Repos UpToDate:
 {% for name in reposNeedUpdate -%}
    repo needs update: {{ name }}
+{% endfor %}
+
+=== Repos Ahead:
+{% for name in reposAhead -%}
+   repo ahead: {{ name }}
+{% endfor %}
+
+=== Repos Diverged:
+{% for name in reposDiverged -%}
+   repo diverged: {{ name }}
+{% endfor %}
+
+=== Repos Failed to get status:
+{% for name in reposFailed -%}
+   repo failed to get status: {{ name }}
 {% endfor %}
 
