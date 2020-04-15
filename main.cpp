@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
    opt.addUsage("-o  --ouput <filename>         output to file(default to console)");
    opt.addUsage("-v X                           verbose level");
    opt.addUsage("-t  --type <type>              reporttype:txt, html(default:txt)");
-   opt.addUsage("-w  --work <directory>         set working directory(default '.'");
+   opt.addUsage("-p  --path <path>              path to the reportfolder(default:.)");
    opt.addUsage("");
    opt.addUsage("-d  --details  scan");
    opt.addUsage("               checkForUpdates");
@@ -61,8 +61,8 @@ int main(int argc, char **argv) {
    opt.setFlag("version");
    opt.setOption('v');
    opt.setFlag("details", 'd');
-   opt.setOption("option", 'o');
-   opt.setOption("work", 'w');
+   opt.setOption("output", 'o');
+   opt.setOption("path", 'p');
 
    opt.processCommandArgs(argc, argv);
 

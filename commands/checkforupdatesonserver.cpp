@@ -69,6 +69,10 @@ void checkSingleRepo(WorkerParams *params) {
 }
 
 void checkForUpdatesOnServer(AnyOption &options, eastl::vector<eastl::string> &repos) {
+
+   //prepare to have fast fail it template is not available
+   prepareOutputReport(options, "checkforupdatesonserver");
+ 
    for(int i=0; i<repos.size(); ++i) {
       CheckUpdateParameters *params = new CheckUpdateParameters();
       params->repositoryToCheck = repos[i];
@@ -76,6 +80,8 @@ void checkForUpdatesOnServer(AnyOption &options, eastl::vector<eastl::string> &r
    }
 
    waitForAllJobsFinished();
+
+   LOG_F(1, "finished checking for updates");
 
    json reportData;
    json reposUpToDate = json::array();
@@ -95,7 +101,10 @@ void checkForUpdatesOnServer(AnyOption &options, eastl::vector<eastl::string> &r
          reposDiverged.push_back(result.substr(1).c_str());
       } else if(result[0] == 'f') {
          reposFailed.push_back(result.substr(1).c_str());
+      } else {
+         LOG_F(1, "NO MARKER FOUND WHAT TO DO?!");
       }
+
    }
    reportData["reposUpToDate"] = reposUpToDate;
    reportData["reposNeedUpdate"] = reposNeedUpdate;
@@ -103,5 +112,5 @@ void checkForUpdatesOnServer(AnyOption &options, eastl::vector<eastl::string> &r
    reportData["reposDiverged"] = reposDiverged;
    reportData["reposFailed"] = reposFailed;
 
-   generateAndOutputReport(options, "checkforupdatesonserver", reportData);
+   generateAndOutputReport(options, reportData);
 }

@@ -61,6 +61,9 @@ void generateUpdateReport(AnyOption &options, eastl::vector<eastl::string> &repo
       newState = loadState(options.getArgv(options.getArgc()-newFilenameArgcIndex));
    }
 
+   //prepare to have fast fail it template is not available
+   prepareOutputReport(options, "updatereport");
+
    for(int i=0; i<repos.size(); ++i) {
       GenerateUpdateReportParameters *params = new GenerateUpdateReportParameters();
       params->repositoryToCheck = repos[i];
@@ -113,5 +116,5 @@ void generateUpdateReport(AnyOption &options, eastl::vector<eastl::string> &repo
    json reportData;
    reportData["updatelogs"] = updateLogs;
 
-   generateAndOutputReport(options, "updatereport", reportData);
+   generateAndOutputReport(options, reportData);
 }

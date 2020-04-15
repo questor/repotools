@@ -9,8 +9,10 @@ eastl::string removeNewlines(eastl::string &source) {
    return result;
 }
 
+inja::Environment injaEnv = inja::Environment();
+inja::Template templ;
 
-void generateAndOutputReport(AnyOption &options, eastl::string reportFilename, json reportData) {
+void prepareOutputReport(AnyOption &options, eastl::string reportFilename) {
    eastl::string reportExtension = "txt";
    char *extOption = options.getValue('t');
    if(extOption == nullptr) {
@@ -20,11 +22,26 @@ void generateAndOutputReport(AnyOption &options, eastl::string reportFilename, j
       reportExtension = extOption;
    }
 
-   inja::Environment injaEnv = inja::Environment();
+   eastl::string pathToTemplFolder(".");
+   if(options.getValue('p')) {
+      pathToTemplFolder = options.getValue('p');
+   }
+   if(options.getValue("path")) {
+      pathToTemplFolder = options.getValue("path");
+   }
+   pathToTemplFolder += "/";
+
    injaEnv.set_element_notation(inja::ElementNotation::Dot);
-   eastl::string fullReportFilename = "reporttemplates/" + reportFilename + "." + reportExtension;
-   inja::Template templ = injaEnv.parse_template(fullReportFilename.c_str());
-   std::string renderedReport = injaEnv.render_template(templ, reportData);
+   eastl::string fullReportFilename = pathToTemplFolder + "reporttemplates/" + reportFilename + "." + reportExtension;
+   templ = injaEnv.parse_template(fullReportFilename.c_str());
+   if(templ.content.size() == 0) {
+      printf("WARNING: your template seems to be empty!");
+   }
+}
+
+void generateAndOutputReport(AnyOption &options, json reportData) {
+
+   std::string renderedReport = injaEnv.render(templ, reportData);
 
    if(options.getValue('o') == nullptr && options.getValue("output") == nullptr) {
       printf("%s", renderedReport.c_str());

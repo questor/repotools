@@ -12,6 +12,7 @@ using json = nlohmann::json;
 //helper functions for strings
 eastl::string removeNewlines(eastl::string &source);
 
-void generateAndOutputReport(AnyOption &options, eastl::string reportFilename, json reportData);
+void prepareOutputReport(AnyOption &options, eastl::string reportFilename);
+void generateAndOutputReport(AnyOption &options, json reportData);
 
 #endif

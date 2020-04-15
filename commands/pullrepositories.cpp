@@ -31,6 +31,10 @@ void pullSingleRepo(WorkerParams *params) {
 }
 
 void pullRepositories(AnyOption &options, eastl::vector<eastl::string> &repos) {
+
+   //prepare to have fast fail it template is not available
+   prepareOutputReport(options, "pullrepositories");
+
    for(int i=0; i<repos.size(); ++i) {
       PullRepositoryParameters *params = new PullRepositoryParameters();
       params->repositoryToPull = repos[i];
@@ -59,5 +63,5 @@ void pullRepositories(AnyOption &options, eastl::vector<eastl::string> &repos) {
    reportData["pulledRepos"] = pulledRepos;
    reportData["alreadyUpToDateRepos"] = alreadyUpToDateRepos;
 
-   generateAndOutputReport(options, "pullrepositories", reportData);
+   generateAndOutputReport(options, reportData);
 }

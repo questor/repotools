@@ -61,6 +61,9 @@ void scanDirectories(AnyOption &options, eastl::vector<eastl::string> &gitReposi
       //if file is already present we can try to find new/deleted repositories
       json reportData;
 
+      prepareOutputReport(options, "repoupdate");
+
+
       json reposArray = json::array();
       for(int i=0; i<newGitRepositories.size(); ++i) {
          reposArray.push_back(removeNewlines(newGitRepositories[i]).c_str());
@@ -98,7 +101,7 @@ void scanDirectories(AnyOption &options, eastl::vector<eastl::string> &gitReposi
       }
       reportData["deletedRepositories"] = deletedArray;
 
-      generateAndOutputReport(options, "repoupdate", reportData);
+      generateAndOutputReport(options, reportData);
    }
 
    saveGitRepositoriesToFile(newGitRepositories);

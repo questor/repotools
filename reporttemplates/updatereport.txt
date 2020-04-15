@@ -1,6 +1,6 @@
 
 
-{% for item in updatelogs -%}
+{% for item in updatelogs %}
 {{ item/repoPath }}:
 {{ item/updateLog }}
 ==========
