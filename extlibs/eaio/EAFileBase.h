@@ -472,11 +472,11 @@ namespace EA
 
             #if (EA_WCHAR_SIZE == 2) // If we can use the L string prefix for 16 bit strings..
             const char16_t         kFilePathSeparator16              = '/';
-            const char16_t*  const kFilePathSeparatorString16        = L"/";
+            const char16_t*  const kFilePathSeparatorString16        = EASTL_CHAR16("/");
             const char16_t         kFilePathSeparatorAlt16           = '/';
-            const char16_t*  const kFilePathSeparatorAltString16     = L"/";
+            const char16_t*  const kFilePathSeparatorAltString16     = EASTL_CHAR16("/");
             const char16_t         kFilePathDriveSeparator16         = '\0';
-            const char16_t*  const kFilePathDriveSeparatorString16   = L"\0";
+            const char16_t*  const kFilePathDriveSeparatorString16   = EASTL_CHAR16("\0");
             #else
             const char16_t         kFilePathSeparator16              = '/';
             const char16_t         kFilePathSeparatorString16[]      = { '/', 0 };
