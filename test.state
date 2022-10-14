@@ -1,0 +1,874 @@
+[
+  {
+    "repoPath": "../../_github/_framework/folly/",
+    "revision": "37c011d897620fed564a8a6d3d15b9c150fc2609"
+  },
+  {
+    "repoPath": "../../_github/_framework/wjakob_nanogui/",
+    "revision": "885e4fccc69bbfdd4c527009eef8ed33641d9765"
+  },
+  {
+    "repoPath": "../../_github/_framework/elle/",
+    "revision": "c53b76e3d632fb1ba62090859032354dee35cf79"
+  },
+  {
+    "repoPath": "../../_github/_framework/reckless/",
+    "revision": "e8d38a780d3ebb2e3478aae47bd1d2aee5f702c3"
+  },
+  {
+    "repoPath": "../../_github/_framework/mordor/",
+    "revision": "ab50198904360748f0ceb8566e1dc114660c566e"
+  },
+  {
+    "repoPath": "../../_github/_framework/enumerable/",
+    "revision": "2e60f483c6e36787b63b29b59ae916ca2e5d0461"
+  },
+  {
+    "repoPath": "../../_github/_framework/wjakob_filesystem/",
+    "revision": "0a539a6c988dc8691af317e077893e831dee2908"
+  },
+  {
+    "repoPath": "../../_github/_framework/gcpp/",
+    "revision": "3be430dd62fe29e92b42c66fd1f9ee3803edbca4"
+  },
+  {
+    "repoPath": "../../_github/_framework/CML/",
+    "revision": "a192e48bdabb9b63fdd9c9b1706f016c64fc63ba"
+  },
+  {
+    "repoPath": "../../_github/_framework/ion/",
+    "revision": "16c8b2b7668215e67542307d26dd2a0bd743196e"
+  },
+  {
+    "repoPath": "../../_github/_framework/boost.outcome/",
+    "revision": "c7ffd269d380fc828f045224ce77990522ddd6cc"
+  },
+  {
+    "repoPath": "../../_github/_framework/boost.afio/",
+    "revision": "4a03f0866b2d608ce24580cbb3905cdd94f8819f"
+  },
+  {
+    "repoPath": "../../_github/_framework/rttr/",
+    "revision": "8fa21b575d2df6ebe80e406150d9898f06bfae99"
+  },
+  {
+    "repoPath": "../../_github/_framework/libphenom/",
+    "revision": "b93da641dd8f678b49692bcdfb6407bea7bdbca3"
+  },
+  {
+    "repoPath": "../../_github/_framework/actor-framework/",
+    "revision": "9fb82f556760e1004e27fb4d303499b603a3fc19"
+  },
+  {
+    "repoPath": "../../_github/_os/minoca-os/",
+    "revision": "15dc86c1ab3dd4ff4195602b21d711795892c4a9"
+  },
+  {
+    "repoPath": "../../_github/_framework/bde/",
+    "revision": "ba252cb776f92fae082d5d422aa2852a9be46849"
+  },
+  {
+    "repoPath": "../../_github/_appfw/Cinder/",
+    "revision": "35e555f1c631cc58a7f2bf3ea916ddbdf74ba477"
+  },
+  {
+    "repoPath": "../../_github/_appfw/fr_public/",
+    "revision": "8c8f82c2ae01133370e649bbc05916e7aceecadd"
+  },
+  {
+    "repoPath": "../../_github/_framework/FastDelegate/",
+    "revision": "8d68386515b5a71f389282a160cc72c22c5fc724"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/tinyheaders/",
+    "revision": "c696129de84e71b20d92904d46eec745d9cd50d1"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/ugc/",
+    "revision": "38b25693e47eaca55f9841a49d39cc47a21b8742"
+  },
+  {
+    "repoPath": "../../_github/_framework/gainput/",
+    "revision": "4973ae4e8a6b733310a44a927ab41631e074f997"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/yas/",
+    "revision": "d73b3228ddd1af8509f8180df0528eb6d4225a06"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/imgui/",
+    "revision": "23b67e6ff5b1b68d18d467dee8d0e3c8cd438c79"
+  },
+  {
+    "repoPath": "../../_github/_framework/yoga/",
+    "revision": "c1a9f6120a92bb6b1f1fa4306e45a3b30e1f2333"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/vul/",
+    "revision": "03d9a11bbd5ce792a9bd7883b0ae4ccaef3b4d23"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/sr_graph/",
+    "revision": "e96e3ac356f0211bd0a0c5a1fd2bd5bcba3fff46"
+  },
+  {
+    "repoPath": "../../_github/_os/Utopia-OS/",
+    "revision": "f3daeeb817c1d30432ad0eef0563c64d80c87a66"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/dvector/",
+    "revision": "e8b4f308850c89231ce7df2511056981f83595f6"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/cr/",
+    "revision": "78727781e22ddeea5743986e10876ac02de75c55"
+  },
+  {
+    "repoPath": "../../_github/_appfw/JUCE/",
+    "revision": "fe6fa12f551357c2ba5a5cf1ca6041d084c9dee8"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/imgui_club/",
+    "revision": "03cfd2a0d0ea1cfa98a686cbbc9aa8e3ea21c010"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/kj/",
+    "revision": "f15ebba374e91cfbd09e67bd9a96057581611180"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/picoev/",
+    "revision": "ff85d9ef578842a40f7c91d2544b7932cec74b9d"
+  },
+  {
+    "repoPath": "../../_github/_gamefw/weep/",
+    "revision": "2a8a12fc0e4c2f18b23ac1ebecbf1a51c22d673d"
+  },
+  {
+    "repoPath": "../../_github/_gamefw/CLove/",
+    "revision": "9621c6ad476f9abc7965ca500ef3bb4068f95f35"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/stddoc.c/",
+    "revision": "e900e84a3c9ea0f4e4e8350574ba25bbb337f6e6"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/pipe/",
+    "revision": "2b2829d93e8e6f19c69b5a18fc236152d35efb56"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/MPMCQueue/",
+    "revision": "57366e41f3f48316f175c2e704795f519a92e1d5"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/pystring/",
+    "revision": "c2de99deb4f0bd13751f8436400b5e8662301769"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/RTree/",
+    "revision": "8d71b01915ccd6bdaec7fcfd007d42460ff4503a"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/nedtries/",
+    "revision": "43371192697ca5afe6fa3a7327e587db5c929c92"
+  },
+  {
+    "repoPath": "../../_github/_gamefw/termite/",
+    "revision": "51a6bffe9165d8796c4cec24c105effe7b471ada"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/hat-trie/",
+    "revision": "022f688bf03cc10741c5788f4086e1cc8070e455"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/SPSCQueue/",
+    "revision": "5146689608d90cb40c1e454fcb9a9378fcbe38f6"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/etl/",
+    "revision": "902ab7d0529d892ea1421338f2db43ee7b14e1b4"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/gc/",
+    "revision": "89b6041bff4b8b8ecba548feac4c589ecfc68346"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/EASTL/",
+    "revision": "f81a8bdfe18021f15e006b4a8ffbd9ab9d1ac745"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/lfqueue/",
+    "revision": "a4bb342349c5b1184c00aa6c18c8759ccd5cfa47"
+  },
+  {
+    "repoPath": "../../_github/_networking/oculus-networked-physics-sample/",
+    "revision": "0416ae439519070eefeb9cbc9e4b3fc9cb5acd42"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/hopscotch-map/",
+    "revision": "6deacbba2c44398b06ba90ae25faeac6186723c7"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/libcds/",
+    "revision": "56f8b3509987a4c01d68dda1327c68d696b7334e"
+  },
+  {
+    "repoPath": "../../_github/_networking/flatbuffers/",
+    "revision": "0cd8daf14e84fc1d5336f947108e6245e27a2686"
+  },
+  {
+    "repoPath": "../../_github/_networking/yojimbo/",
+    "revision": "5c3d6cb7e625e9a9f30eb38eaec155294f536df0"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/array-hash/",
+    "revision": "5e91a05b4b1e3687f6c8c485e3c8407ac6a7c15b"
+  },
+  {
+    "repoPath": "../../_github/_networking/dpdk/",
+    "revision": "b7167593e09e67b4746d87ecc390ffff8809599b"
+  },
+  {
+    "repoPath": "../../_github/_networking/bond/",
+    "revision": "bd4b46e78a82dd3a38b52b00233a1a22047014d2"
+  },
+  {
+    "repoPath": "../../_github/_networking/capnproto/",
+    "revision": "00cd0c38a7767c57f900694bfe553ce23efe88ee"
+  },
+  {
+    "repoPath": "../../_github/_books/game-programming-patterns/",
+    "revision": "54ac84a76f26b387776dc1e3e66e042f9e7c77f4"
+  },
+  {
+    "repoPath": "../../_github/_networking/nng/",
+    "revision": "3f40a08eab60df77dc61ae0350e59f36e8d0ed16"
+  },
+  {
+    "repoPath": "../../_github/_networking/TimeSync/",
+    "revision": "4ca841fef1646b06124bba5613f7c4589d08a724"
+  },
+  {
+    "repoPath": "../../_github/_tools/synergy-core/",
+    "revision": "4cecc36603918cb16854ddffa40a420d77f8fcd1"
+  },
+  {
+    "repoPath": "../../_github/_tools/Remotery/",
+    "revision": "978ce09bdb0448ba5de6e26577cf0332bd5ea047"
+  },
+  {
+    "repoPath": "../../_github/_networking/czrpc/",
+    "revision": "04ef5154164e94033ed6bc861a7d831185b364f8"
+  },
+  {
+    "repoPath": "../../_github/_tools/dred/",
+    "revision": "6ac0abe45234feaa90d0b04e1ac62ba71530fcfb"
+  },
+  {
+    "repoPath": "../../_github/_tools/microprofile/",
+    "revision": "b49ae80262b206a579808dc3e442f0d8aafe81e9"
+  },
+  {
+    "repoPath": "../../_github/_tools/fcpp/",
+    "revision": "58ca27a44cca5c3121ce37957838d6598a214bcf"
+  },
+  {
+    "repoPath": "../../_github/_game/gincu_cpgf/",
+    "revision": "117bca15259b3f8e557e9805d433c7b174149c4c"
+  },
+  {
+    "repoPath": "../../_github/_security/libhydrogen/",
+    "revision": "d4019d970a9daf04dbc70addf66e509c350478a8"
+  },
+  {
+    "repoPath": "../../_github/_tools/gpuvis/",
+    "revision": "f1b93ba99715e1e15ff6a7d65e7357fb4b384115"
+  },
+  {
+    "repoPath": "../../_github/_game/lithtech/",
+    "revision": "c64f83186cc93c13fda93238ac00094bf4548f01"
+  },
+  {
+    "repoPath": "../../_github/_game/deceiver/",
+    "revision": "475fa31053a5f1258647a23474547957a5b91b73"
+  },
+  {
+    "repoPath": "../../_github/_tools/crunch/",
+    "revision": "80c087dbc90a12d1e47309679cc89c1fc2cf8650"
+  },
+  {
+    "repoPath": "../../_github/_graphic/cmft/",
+    "revision": "4fe3a34c3fd734502f73d321f1a2877735578f99"
+  },
+  {
+    "repoPath": "../../_github/_Unity3d/RoadArchitect/",
+    "revision": "fa91cd679e0d2338178ca57729a6314bb1bae311"
+  },
+  {
+    "repoPath": "../../_github/_game/obbg/",
+    "revision": "7fdd8bb22d9bd26e9ba6bff68ea259af862c2caf"
+  },
+  {
+    "repoPath": "../../_github/_graphic/tooll/",
+    "revision": "8b77e12a062332e92c79ba0a5948b4a89a07a76f"
+  },
+  {
+    "repoPath": "../../_github/_scripting/zippypy/",
+    "revision": "4564509f0adf5a47ccdf963bf2eaf647ceebdfc4"
+  },
+  {
+    "repoPath": "../../_github/_graphic/librush/",
+    "revision": "4b77dd41480b7986b0a626bf2a0a08c3a4386aab"
+  },
+  {
+    "repoPath": "../../_github/_graphic/refonter/",
+    "revision": "7404e05a119e4d6d3773b02e26c94558e26a70bb"
+  },
+  {
+    "repoPath": "../../_github/_graphic/cmftStudio/",
+    "revision": "46f006f22a8c6683da23cee015c6898eb5ab6d3f"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Vulkan-Forward-Plus-Renderer/",
+    "revision": "95287e550a629a138b25b1eaca534ff984dbeb31"
+  },
+  {
+    "repoPath": "../../_github/_graphic/fastuidraw/",
+    "revision": "798b58b0ce0ed4797dba9041b90b62bd14065ce8"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Probulator/",
+    "revision": "d5993a30df54f4850311045e3ef7f28624e20924"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Intrinsic/",
+    "revision": "47c9df7a39c65bfb29cf624ac12041254afc6ecf"
+  },
+  {
+    "repoPath": "../../_github/_graphic/OpenCL-Structure-from-Motion/",
+    "revision": "07ff29703da3352ac1e6cc990b27cccb49815e51"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Choreograph/",
+    "revision": "34631980702f5d3745ac29d262712dd81b594ade"
+  },
+  {
+    "repoPath": "../../_github/_graphic/DeferredTexturing/",
+    "revision": "acf95ec2eaa53b718ecc787db5e769ad451573c9"
+  },
+  {
+    "repoPath": "../../_github/_graphic/XShaderCompiler/",
+    "revision": "55fe16a203c23d22ece877de4623826098e86ef0"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Falcor/",
+    "revision": "210b3a2c451232a3c27939dc39eb43fc93c99237"
+  },
+  {
+    "repoPath": "../../_github/_graphic/AwesomeBump/",
+    "revision": "9f1049f8af30721a925916194d4994fea1a3d16b"
+  },
+  {
+    "repoPath": "../../_github/_graphic/lullaby/",
+    "revision": "5eabc44b1c7c20e9c1aafef4c161e47587bc6658"
+  },
+  {
+    "repoPath": "../../_github/_graphic/datum/",
+    "revision": "e9b77901388a2a1bb3a64a8ab9d0d26045cd93a2"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Directus3D/",
+    "revision": "fd43e0dbb02286c7feebfbb81d5a568ef17a8d72"
+  },
+  {
+    "repoPath": "../../_github/_graphic/kit/",
+    "revision": "451757a55c6895c04147f86e01710d29b862c594"
+  },
+  {
+    "repoPath": "../../_github/_database/foundationdb/",
+    "revision": "b1c17f6b2de5e79aab4ef751c67de1ac4e1ff6d3"
+  },
+  {
+    "repoPath": "../../_github/_database/mdbm/",
+    "revision": "893f7a87febf2499e8d3455b1bb0eff16c7ba70a"
+  },
+  {
+    "repoPath": "../../_github/_buildtool/tundra/",
+    "revision": "52cf2d4ebe5f7ecd153545dda4ef2491d079a192"
+  },
+  {
+    "repoPath": "../../_github/_buildtool/fastbuild/",
+    "revision": "5cdd2ae5b48e855ca2a1b0b4d40bd1e7b8b7d90a"
+  },
+  {
+    "repoPath": "../../_github/_buildtool/peon_solar/",
+    "revision": "a0b76e3c945679a8fcb4cc94160298788b96e4a5"
+  },
+  {
+    "repoPath": "../../_github/_audio/64klang/",
+    "revision": "bdf02625108d5a7e14d9af356ff68ff8c2ab5968"
+  },
+  {
+    "repoPath": "../../_github/_audio/Oidos/",
+    "revision": "44623ed7ffffaa8b79189a95685b81cb5bb7a2ca"
+  },
+  {
+    "repoPath": "../../_github/_audio/Tonic/",
+    "revision": "ff84448b643d06c70ec55f4cbee3f3d7478d5c87"
+  },
+  {
+    "repoPath": "../../_github/_framework/preshing/turf/",
+    "revision": "9ae0d4b984fa95ed5f823274b39c87ee742f6650"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/resource_lib/",
+    "revision": "e9186c1af0c7f28ddd4fe4962ec87caceb4ea47b"
+  },
+  {
+    "repoPath": "../../_github/_audio/Soundpipe/",
+    "revision": "35d856fcf8a0d85c285818554f569b592d066d10"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/vector_lib/",
+    "revision": "bcd013eda24b8a6326b729d4ac78cdf3aefa2c41"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/mdns_lib/",
+    "revision": "733f606478b73ead2e86bdeb083bbd254cd81c88"
+  },
+  {
+    "repoPath": "../../_github/_audio/tunefish/",
+    "revision": "d56812e8d99d8ce2753deb6d631190c9a1223423"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/foundation_lib/",
+    "revision": "54be00bf48d2585a4321d266ec436629099a9b5a"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/network_lib/",
+    "revision": "e5718e98ea2f7ff5ff0ab210098195175afc6bb5"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/http_lib/",
+    "revision": "9f8e0ab03984db23679e505480a60938ab8d28c3"
+  },
+  {
+    "repoPath": "../../_github/_appfw/_raylib/raylib-lua/",
+    "revision": "3dfd5ee310fb00f8677ae8de4ea57bc55b6c7392"
+  },
+  {
+    "repoPath": "../../_github/_appfw/_raylib/rPBR/",
+    "revision": "8ea0a50b6880ac4ef0706bd84f621c201477425a"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/json/",
+    "revision": "9948eee985fe6d38a1a826005c420797588861a4"
+  },
+  {
+    "repoPath": "../../_github/_appfw/_raylib/rfxgen/",
+    "revision": "b0da4af851fda1c663e5db3bae6258006ae9ae3d"
+  },
+  {
+    "repoPath": "../../_github/_appfw/_raylib/raygui/",
+    "revision": "c82d5bffa86d0aed83ae9a65631ea23848fa2724"
+  },
+  {
+    "repoPath": "../../_github/_framework/mindroid/Mindroid.ecpp/",
+    "revision": "e3c6444819960bc735cb2fee424e622c58aba101"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/_willemt/aqueue-noptr/",
+    "revision": "1f8c0a83a3d54ad405d5438b738344fe5bbb9ddd"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/_willemt/splay-tree/",
+    "revision": "71f7a36bc02fe234ed4dbc0a698265d3204863f3"
+  },
+  {
+    "repoPath": "../../_github/_appfw/_raylib/rres/",
+    "revision": "f8259b35da293a79ae6d6afeb8df424586fbf342"
+  },
+  {
+    "repoPath": "../../_github/_networking/_web/facil.io/",
+    "revision": "4ccb9fb7af3e47b4034273eeb6a600e95d8e56d3"
+  },
+  {
+    "repoPath": "../../_github/_networking/_web/r3/",
+    "revision": "22a6b99b34c958474a6e14d0a6dc4f5631c67208"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/_willemt/bipbuffer/",
+    "revision": "cb7b9ad5a5a41eb35b18a325abc995102851bd8d"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/MTuner/",
+    "revision": "78e524cb4beae17593dd2f0bb40226681bbe216c"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/MTunerDLL/",
+    "revision": "ec1b03d9bd18dcbe9b708477d38ad80356c5b1f3"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/_willemt/heap/",
+    "revision": "c34d10f83927325eb91225d8750f9d7b4a3cded6"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/build/",
+    "revision": "255ea5e0a7ae08543ac04e52e9b62f90c7c6a062"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/rmem/",
+    "revision": "8a926309f89c3dd33e70f44c6af1b3338f14991b"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/rqt/",
+    "revision": "322e93c0fa2bce8f2ec876c09449174aa99bdfa8"
+  },
+  {
+    "repoPath": "../../_github/_tools/edbee-app/edbee-lib/",
+    "revision": "d6a71925bda26dcab2b32571b14338ffb7a18e2e"
+  },
+  {
+    "repoPath": "../../_github/_game/realmofthemadgod/old_client_27.7.x2/",
+    "revision": "d8d2081b2030fb468bbd43dce918e0396a4df812"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/rdebug/",
+    "revision": "6a6679c2d63efcf7f7777b33169d49ce7b90c98b"
+  },
+  {
+    "repoPath": "../../_github/_graphic/bgfx/bimg/",
+    "revision": "8f382eb4080a3a517639a3d16c03212391ecb1cc"
+  },
+  {
+    "repoPath": "../../_github/_framework/boost-lite/",
+    "revision": "a820b995ea46514ecec9394324a9bb3978532525"
+  },
+  {
+    "repoPath": "../../_github/_framework/boost.fiber/",
+    "revision": "2112ee33c8f8cfbea492d9c6286f48a48eb5247c"
+  },
+  {
+    "repoPath": "../../_github/_framework/spdlog/",
+    "revision": "f1a60eb6b16f64f042f975e0c9ebba815a417f56"
+  },
+  {
+    "repoPath": "../../_github/_framework/sewing/",
+    "revision": "2023701bc5ef213941c1829bc07f1f8537ccbf94"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/tinybits/",
+    "revision": "8b04372f411b9933d64efc64d93801c0f4f0d9eb"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/tm/",
+    "revision": "1fe42ba88a4b0715e68b32cb8d58776bd2fb34e2"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/termite-jobs/",
+    "revision": "09a8ea5ce1bf1cca940d24b863db72dd91dab243"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/stb/",
+    "revision": "e6afb9cbae4064da8c3e69af3ff5c4629579c1d2"
+  },
+  {
+    "repoPath": "../../_github/_gamefw/indielib-crossplatform/",
+    "revision": "486e4f4c45d45503d5b1750cc3a7bb00c839bc41"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/tgc/",
+    "revision": "35207051557c79ea25942c021fb18856c72af8e3"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/mpc/",
+    "revision": "2b05913b14e04c436fc1af6776a037d2d6a9dc23"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/ustl/",
+    "revision": "31b06a72881d0121ab106c2ca2c56c7d8a5af25b"
+  },
+  {
+    "repoPath": "../../_github/_networking/NetFlex/",
+    "revision": "6ce8bf2167c24cc02a941a74a71107faf5e12d20"
+  },
+  {
+    "repoPath": "../../_github/_networking/WLANOptimizer/",
+    "revision": "62604388e3ab6734f3fe61c9508dd220ce4d58d7"
+  },
+  {
+    "repoPath": "../../_github/_books/craftinginterpreters/",
+    "revision": "4b49e641b24ce7aa6138dec687e10f5a98febdf8"
+  },
+  {
+    "repoPath": "../../_github/_tools/bloaty/",
+    "revision": "bdbb3ce196c86d2154f5fba99b5ff73ca43446a9"
+  },
+  {
+    "repoPath": "../../_github/_tools/edbee-app/",
+    "revision": "ac54e11d1cc07022cdb33e0c0ea33f7cee37a200"
+  },
+  {
+    "repoPath": "../../_github/_game/gincu/",
+    "revision": "c2d4dcbb2f0a894083b84a9ea071522f08ccbf9f"
+  },
+  {
+    "repoPath": "../../_github/_game/kult/",
+    "revision": "500741b1462c91167cf47baa7d07518a1f92d2f8"
+  },
+  {
+    "repoPath": "../../_github/_graphic/SpireMiniEngine/",
+    "revision": "4bec81051cc789fd9fb18f6bb3897af3b7ffa45e"
+  },
+  {
+    "repoPath": "../../_github/_graphic/The-Forge/",
+    "revision": "d3d89b50f2d6308ce4e065b7d9c5e7d0b131e466"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Spire/",
+    "revision": "727250ed0568b464a48101658a1d7ef9a258e77d"
+  },
+  {
+    "repoPath": "../../_github/_graphic/sandbox/",
+    "revision": "fd4aa4d0e1cd6e45459cdee44aa18d0087adb708"
+  },
+  {
+    "repoPath": "../../_github/_graphic/PBR/",
+    "revision": "71f53a1face5d6da9651a20e80e593cbe5c2071d"
+  },
+  {
+    "repoPath": "../../_github/_graphic/LightCull/",
+    "revision": "c8fc4d8551bfd94a095172d8edf8a05062005449"
+  },
+  {
+    "repoPath": "../../_github/_graphic/BakingLab/",
+    "revision": "3c28292576357b51d9d1f25a4c140b352a2f38cb"
+  },
+  {
+    "repoPath": "../../_github/_audio/Maximilian/",
+    "revision": "cc721886b84190dd6354f0f40e054bfb6826926b"
+  },
+  {
+    "repoPath": "../../_github/_audio/Moodler/",
+    "revision": "a0c984c36abae52668d00f25eb3749e97e8936d3"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/ninja_generator/",
+    "revision": "4f41f41cbd5db9756f6b3cd3df71dca9bc56725f"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/render_lib/",
+    "revision": "fdcdbae5796795740c5d8d69a78965dfc837ad5f"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/rpmalloc/",
+    "revision": "bd8d9992c92e0cdf478f4124420110c61c593543"
+  },
+  {
+    "repoPath": "../../_github/_framework/mindroid/Mindroid.cpp/",
+    "revision": "206e54475ac8825080d1b63ce69f6bd8d3585860"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/sokol/sokol-samples/",
+    "revision": "23016f2bbc7b39e2f2b39cef63e9706286c75d26"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/_willemt/duraqueue/",
+    "revision": "f1be426c13dc9c1d804a1c8b0747668df1c4ad1a"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/_willemt/arrayqueue/",
+    "revision": "cdfcba3602682ecdc5c0a272f15d79e5edf13834"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/rbase/",
+    "revision": "b1356c74669d5a97c9e18aa93158e1e0cd29e780"
+  },
+  {
+    "repoPath": "../../_github/_tools/edbee-app/edbee-data/",
+    "revision": "783dac326d397fdbde0ca3ca1d18419b356638c2"
+  },
+  {
+    "repoPath": "../../_github/_graphic/bgfx/bgfx/",
+    "revision": "c22661585db2dfb396a88d38447178bae6662cee"
+  },
+  {
+    "repoPath": "../../_github/_framework/loguru/",
+    "revision": "5f9788b6748d1af2264ba96df4985113ec1b6284"
+  },
+  {
+    "repoPath": "../../_github/_framework/looper/",
+    "revision": "c2631e20b2598f50636e50cf636b5bde3ce419eb"
+  },
+  {
+    "repoPath": "../../_github/_framework/seastar/",
+    "revision": "6b97e00920e3e7c17baa90cb11d61ea8b4290a39"
+  },
+  {
+    "repoPath": "../../_github/_framework/logog/",
+    "revision": "1269f56625a32c34786dca0c415479e1ff1ba298"
+  },
+  {
+    "repoPath": "../../_github/_framework/sajson/",
+    "revision": "8e8932148a2e4dcd1209a0438ec84acedf165077"
+  },
+  {
+    "repoPath": "../../_github/_framework/itoa/",
+    "revision": "0dbbdadb8e04d3fb8839b93953584465f92dba34"
+  },
+  {
+    "repoPath": "../../_github/_framework/CppVerbalExpressions/",
+    "revision": "7ee381d495e10006eebaca12d48ef6fe4f0b5b42"
+  },
+  {
+    "repoPath": "../../_github/_framework/WindowsHModular/",
+    "revision": "9712b9d8b10c9e449646ceb8e303a12b6bdbed38"
+  },
+  {
+    "repoPath": "../../_github/_os/zephyr/",
+    "revision": "051c1f5fd61c81899d88d106088e2551b3232a77"
+  },
+  {
+    "repoPath": "../../_github/_appfw/WDL/",
+    "revision": "738f90da5ce7a56d4baac7e4b3f3ec9881eea214"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/r128/",
+    "revision": "1fe23d37223a26923eee56c901a1c4ab24cb5602"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/stdstring.h/",
+    "revision": "405583834ed723c3ce8b0577772a94843272a1b6"
+  },
+  {
+    "repoPath": "../../_github/_gamefw/angel2d/",
+    "revision": "c16f39d7e59ff4bf51dff9de1a135ddf321e2f32"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/sparse-map/",
+    "revision": "c1ab61910c6f343033e1ae62b323bed8ddfeb1cb"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/sparsepp/",
+    "revision": "76c6e001efe204f70af4860fd76789212b9c05d0"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/libflatarray/",
+    "revision": "9bffdd83e535b16e502fbbf132f80dd9ac68d80f"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/ordered-map/",
+    "revision": "0ddf63708282edb9f308152385871d714605d390"
+  },
+  {
+    "repoPath": "../../_github/_networking/reliable.io/",
+    "revision": "87ae37437e4f89fd84ef35c7c1890a4bf4972481"
+  },
+  {
+    "repoPath": "../../_github/_networking/smf/",
+    "revision": "346dac2e2c936db2f05d2a1f2ac21d95946841b7"
+  },
+  {
+    "repoPath": "../../_github/_tools/aseprite/",
+    "revision": "e6e74977c96497859553e680858b02fa4ecb1576"
+  },
+  {
+    "repoPath": "../../_github/_tools/HashTWM/",
+    "revision": "0ddf3c31bbea1f7337657f344ab9dc73059a70bc"
+  },
+  {
+    "repoPath": "../../_github/_tools/waxeye/",
+    "revision": "467f56169ef1b72953816c12cc02b4f91b083fa7"
+  },
+  {
+    "repoPath": "../../_github/_game/massgate/",
+    "revision": "82c38a85e036f069eda2cf89c47583a9c0c27183"
+  },
+  {
+    "repoPath": "../../_github/_game/keeperrl/",
+    "revision": "6bb05d03c83b5c6dfaeca3ce2405f876484cbd38"
+  },
+  {
+    "repoPath": "../../_github/_scripting/micropython/",
+    "revision": "4117a3d672df8686fb06df421bd07d5ce882ae56"
+  },
+  {
+    "repoPath": "../../_github/_graphic/GridFluidSim3D/",
+    "revision": "5dbd0ca028fc6a7ec8d9e9db56501a814c0f09f1"
+  },
+  {
+    "repoPath": "../../_github/_graphic/IBLBaker/",
+    "revision": "65d244546d2e79dd8df18a28efdabcf1f2eb7717"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Cinder-Experiments/",
+    "revision": "c81fd1f149d0a6585afd1da5507be6ca1f52e29d"
+  },
+  {
+    "repoPath": "../../_github/_graphic/Lugdunum/",
+    "revision": "9b59bccd53365b2c264d9b2988d25d5870425a1b"
+  },
+  {
+    "repoPath": "../../_github/_database/datadraw/",
+    "revision": "9c90d74d173979409eb0a11dfbc3751acd01a7b0"
+  },
+  {
+    "repoPath": "../../_github/_buildtool/peon/",
+    "revision": "9302f56e71b771e76dcc75978702b3181723b6c1"
+  },
+  {
+    "repoPath": "../../_github/_audio/invader/",
+    "revision": "35104b9204f309c50e3c5653b10cac1266cd5f7c"
+  },
+  {
+    "repoPath": "../../_github/_framework/preshing/junction/",
+    "revision": "5ad3be7ce1d3f16b9f7ed6065bbfeacd2d629a08"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/window_lib/",
+    "revision": "6acdf26c5bc9aa367df6b32dad0ed9ffb64ee525"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/timer_lib/",
+    "revision": "d590bde429c0a62690c484d95ef3cdce3be0a8ad"
+  },
+  {
+    "repoPath": "../../_github/_framework/_rampant/mdns/",
+    "revision": "5e765568d6e127be14e35f6d58f1c31f2c0f6846"
+  },
+  {
+    "repoPath": "../../_github/_appfw/_raylib/raylib/",
+    "revision": "103044926bc904a11c145f1d12cf22001a2c085b"
+  },
+  {
+    "repoPath": "../../_github/_singlesourcelib/sokol/sokol/",
+    "revision": "9e8f93001d363795842c6d34cc0fb23fd39cbf29"
+  },
+  {
+    "repoPath": "../../_github/_datastructures/_willemt/cbuffer/",
+    "revision": "00eed6a5c92851891d0377ef7adf6aca388fad3f"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/MTunerCmd/",
+    "revision": "577f2d98cfb2f54b725568aa171ae5c047d72f4e"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/DIA/",
+    "revision": "c2e781b2e9b9181da6f020fc5cc2195306f3323e"
+  },
+  {
+    "repoPath": "../../_github/_tools/_mtuner/MTunerInject/",
+    "revision": "3ee267b9b2d494ea6883a5ad2519e761fdb1a96d"
+  },
+  {
+    "repoPath": "../../_github/_graphic/bgfx/bx/",
+    "revision": "a4447f725b03ade83a7ca9070a0504e423241cc4"
+  },
+  {
+    "repoPath": "../../_github/_game/realmofthemadgod/new_client/",
+    "revision": "3734486a7a9f5cfaaca63bf12ce1621a8f4896a3"
+  },
+  {
+    "repoPath": "../../_github/_game/realmofthemadgod/priv_srv/",
+    "revision": "55349a7fe1ebd1a56106714b9f955d43414458c0"
+  }
+]

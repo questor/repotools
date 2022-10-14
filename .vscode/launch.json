@@ -1,0 +1,20 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) Starten",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/t2-output/win32-msvc-debug-default/repotool.exe",
+            "args": ["-v", "5", "--work", "e:/_github", "-d", "scan"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "externalTerminal"
+        }
+
+    ]
+}

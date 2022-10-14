@@ -1,0 +1,8 @@
+
+
+{% for item in updatelogs %}
+{{ item/repoPath }}:
+{{ item/updateLog }}
+==========
+{% endfor %}
+

@@ -1,0 +1,17 @@
+
+repositories found:
+{% for name in repositories %}
+   {{ name }}
+{% endfor %}
+
+===================================
+repositories deleted from last run:
+{% for name in deletedRepositories %}
+   {{ name }}
+{% endfor %}
+
+===================================
+repositories added in this run:
+{% for name in addedRepositories %}
+   {{ name }}
+{% endfor %}

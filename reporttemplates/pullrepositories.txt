@@ -1,0 +1,20 @@
+
+repositories already up to date:
+{% for name in alreadyUpToDateRepos %}
+   {{ name }}
+{% endfor %}
+
+===================================
+repositories pulled:
+{% for obj in pulledRepos %}
+   {{ obj/repository }}
+{% endfor %}
+
+===================================
+repositories pulled with detailed report:
+{% for obj in pulledRepos %}
+   {{ obj/repository }}
+   ====================
+   {{ obj/output }}
+----   
+{% endfor %}
